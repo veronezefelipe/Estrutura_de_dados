@@ -115,26 +115,34 @@ void percorreListaHeadTail(Lista *lista) {
 }
 
 int removeElementoDaLista(Lista *lista, Nodo *nodoRemover) {
+  Nodo *antigo;
+  int dado;
   if ((nodoRemover != NULL) && (lista->size != 0)) {
     if (nodoRemover == lista->head) {
+      antigo = lista->head;
       lista->head = nodoRemover->next;
       if (lista->head == NULL) {
+        antigo = lista->tail;
         lista->tail = NULL;
       } else {
+        antigo = nodoRemover->next->prev;
         nodoRemover->next->prev = NULL;
       }
     } else {
       nodoRemover->prev->next = nodoRemover->next;
       if (nodoRemover->next == NULL) {
+        antigo = lista->tail;
         lista->tail = nodoRemover->prev;
       } else {
+        antigo = nodoRemover->next->prev;
         nodoRemover->next->prev = nodoRemover->prev;
       }
     }
+    dado = antigo->dado;
     free(nodoRemover);
     lista->size--;
   }
-  return 0;
+  return dado;
 }
 
 Nodo *buscaElemento(Lista *lista, int n) {
