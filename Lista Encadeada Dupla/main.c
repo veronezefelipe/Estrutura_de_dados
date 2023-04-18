@@ -13,7 +13,7 @@ typedef struct sLista {
   int size;
 } Lista;
 
-// Prototipação
+
 Nodo *alocaMemoriaNodo();
 Lista *alocaMemoriaLista();
 Nodo *criaNodo(int);
@@ -23,7 +23,7 @@ void percorreListaHeadTail(Lista *);
 int removeElementoDaLista(Lista *, Nodo *);
 Nodo *buscaElemento(Lista *, int);
 
-// Implementação
+
 int main() {
   Nodo *aux;
   Lista *lista1;
